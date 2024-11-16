@@ -8,18 +8,18 @@ export default function AddPost() {
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);  // Added state for image preview
 
-  // Handle image selection and preview
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
 
-    // Create a URL for the selected image to preview it
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result);  // Set the image preview
+        setImagePreview(reader.result);  
       };
-      reader.readAsDataURL(file);  // Start reading the file as a data URL
+      reader.readAsDataURL(file);  
     }
   };
 
@@ -44,7 +44,7 @@ export default function AddPost() {
         setTitle('');
         setImage(null);
         setDescription('');
-        setImagePreview(null); // Reset the image preview after successful submit
+        setImagePreview(null); 
       }
       console.log(data);
     } catch (error) {
