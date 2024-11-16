@@ -8,7 +8,7 @@ import { setUser } from '../redux/AuthSlice';
 
 
 export default function Profile() {
-  const { userId } = useParams(); // Assuming you're passing the post ID in the route
+  const { userId } = useParams();
   const dispatch=useDispatch()
   
 
