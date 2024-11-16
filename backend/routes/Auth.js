@@ -6,7 +6,6 @@ import { isLogin } from '../middleware/CheckAdmin.js'
 
 const AuthRoutes=express.Router()
 
-
 AuthRoutes.post('/register',upload.single('profile'),Register)
 AuthRoutes.post('/login',Login)
 AuthRoutes.patch('/profile/:id',upload.single('profile'),isLogin,updateProfile)
