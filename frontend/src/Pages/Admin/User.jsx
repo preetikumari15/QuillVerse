@@ -10,11 +10,11 @@ export default function User() {
     { id: 1, name: 'John Doe', email: 'john@example.com' },
     { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
     { id: 3, name: 'Michael Brown', email: 'michael@example.com' },
-    // Add more users as needed
+    
   ];
 
   const handleDelete = async (userId) => {
-    // Display a confirmation dialog
+    
     const confirmed = window.confirm('Are you sure you want to delete this user?');
   
     if (confirmed) {
@@ -24,7 +24,7 @@ export default function User() {
   
         if (data.success) {
           toast.success(data.message);
-          setLoadedata(!loadedata); // Trigger reloading the data
+          setLoadedata(!loadedata); 
         } else {
           toast.error('Failed to delete the user.');
         }
@@ -32,7 +32,7 @@ export default function User() {
         console.error('Error deleting user:', error);
    
         if (error.response && error.response.data && error.response.data.message) {
-            // setError(error.response.data.message); // Set error message from server response
+            
             toast.error(error.response.data.message)
         } else {
             toast.error("An unexpected error occurred. Please try again.");
