@@ -1,60 +1,60 @@
 import React, { useState } from 'react';
-import { post } from '../../services/Endpoint'; // Import your post service for making requests
-import toast from 'react-hot-toast'; // Import toast for notifications
+import { post } from '../../services/Endpoint'; 
+import toast from 'react-hot-toast'; 
 
 export default function AddPost() {
-  // State hooks to manage input values
+  
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null); // Image preview state
+  const [imagePreview, setImagePreview] = useState(null); 
 
-  // Handle image selection and preview
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
 
-    // Create a URL for the selected image to preview it
+    
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result); // Set the image preview
+        setImagePreview(reader.result); 
       };
-      reader.readAsDataURL(file); // Start reading the file as a data URL
+      reader.readAsDataURL(file); 
     }
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload on form submit
+    e.preventDefault(); 
     try {
       const formData = new FormData();
       if (image) {
-        formData.append('postimg', image); // Append image file to form data
+        formData.append('postimg', image); 
       }
-      formData.append('title', title); // Append title to form data
-      formData.append('desc', description); // Append description to form data
+      formData.append('title', title);
+      formData.append('desc', description); 
 
-      // Debugging: Check what data is being sent
+      
       formData.forEach((value, key) => {
         console.log(`${key}: ${value}`);
       });
 
-      // Make POST request using your 'post' function (axios wrapper)
+      
       const response = await post('/blog/create', formData);
       const data = response.data;
 
-      // Handle success response
+    
       if (data.success) {
-        toast.success(data.message); // Show success toast
-        setTitle(''); // Clear title input
-        setDescription(''); // Clear description input
-        setImage(null); // Clear image
-        setImagePreview(null); // Reset image preview
+        toast.success(data.message);
+        setTitle(''); 
+        setDescription(''); 
+        setImage(null); 
+        setImagePreview(null); 
       }
     } catch (error) {
-      console.error(error); // Handle any errors
-      toast.error('Error creating post'); // Show error toast
+      console.error(error); 
+      toast.error('Error creating post'); 
     }
   };
 
@@ -75,7 +75,7 @@ export default function AddPost() {
                     type="file"
                     className="form-control"
                     id="image"
-                    onChange={handleImageChange} // Handle image selection
+                    onChange={handleImageChange} 
                   />
                   {/* Image Preview */}
                   {imagePreview && (
@@ -98,7 +98,7 @@ export default function AddPost() {
                     id="postTitle"
                     placeholder="Enter post title"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)} // Handle title change
+                    onChange={(e) => setTitle(e.target.value)} 
                     required
                   />
                 </div>
@@ -112,7 +112,7 @@ export default function AddPost() {
                     rows="6"
                     placeholder="Write your post description here"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)} // Handle description change
+                    onChange={(e) => setDescription(e.target.value)} 
                     required
                   ></textarea>
                 </div>
