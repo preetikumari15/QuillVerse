@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
 
 export default function Blog() {
-  const { postId } = useParams(); // Assuming you're passing the post ID in the route
+  const { postId } = useParams(); 
   const user = useSelector((state) => state.auth.user);
 
   const [singlePost, setSinglePost] = useState(null);
