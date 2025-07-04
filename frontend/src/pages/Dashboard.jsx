@@ -30,7 +30,7 @@ const Dashboard = () => {
     data.append("image", formData.image);
     try {
       const res = await axios.post(
-        "http://localhost:4000/blog/create",
+        "https://quillverse.onrender.com/blog/create",
         formData,
         {
           headers: {
@@ -53,7 +53,7 @@ const Dashboard = () => {
   useEffect(() => {
     const allBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/blog/all", {
+        const res = await axios.get("https://quillverse.onrender.com/blog/all", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -70,7 +70,7 @@ const Dashboard = () => {
   const removeBlog = async (blogId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:4000/blog/delete/${blogId}`,
+        `https://quillverse.onrender.com/blog/delete/${blogId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -175,7 +175,7 @@ const Dashboard = () => {
                       <td className="border px-4 py-2">{blog.category}</td>
                       <td className="border px-4 py-2">
                         <img
-                          src={`http://localhost:4000/images/${blog.image}`}
+                          src={`https://quillverse.onrender.com/images/${blog.image}`}
                           alt={blog.title}
                           className="w-16 h-16 object-cover mx-auto"
                         />
