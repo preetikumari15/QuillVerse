@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors(
     {
         origin: 'https://quillverse.vercel.app',
-        methods: ['GET', 'POST', 'PUT'],
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true
     }
 ));
